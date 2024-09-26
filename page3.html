@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="page3.css" />
+    <title>Page 3</title>
+  </head>
+  <body>
+    <script>
+      document.addEventListener("mousemove", function (e) {
+        let body = document.querySelector("body");
+        let heart = document.createElement("box");
+        let x = e.offsetX;
+        let y = e.offsetY;
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+
+        let size = Math.random() * 80;
+        heart.style.width = 10 + size + "px";
+        heart.style.height = 10 + size + "px";
+
+        let transformValue = Math.random() * 360;
+        heart.style.transform = "rotate(" + transformValue + "deg)";
+        body.appendChild(heart);
+
+        setTimeout(function () {
+          heart.remove();
+        }, 1000);
+      });
+    </script>
+    <div class="text">Sample Text</div>
+    <div class="text2">Enter here..</div>
+    <!-- <div class="text3"></div> -->
+    <section>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </section>
+  </body>
+</html>
