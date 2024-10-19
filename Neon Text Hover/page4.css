@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #111;
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
+  cursor: none;
+}
+
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s ease, height 0.15s ease, background 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+body:hover .custom-cursor {
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  text-align: center;
+}
+
+/* Include following code to your style.css file */
+.neon-text {
+  font-size: 5rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  display: inline-block;
+  z-index: 1;
+}
+
+.neon-text:hover {
+  transform: scale(1.05);
+  color: #fff;
+}
+
+.neon-text::before,
+.neon-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.6;
+  transition: transform 0.4s ease;
+}
+
+.neon-text::before {
+  color: #00f7ff;
+  text-shadow: 0 0 10px #00f7ff, 0 0 30px #00f7ff, 0 0 60px #00e1ff;
+  transform: skewX(0deg) translateX(-3px) translateY(-3px);
+}
+
+.neon-text::after {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 30px #ff00ff, 0 0 60px #ff00ff;
+  transform: skewX(0deg) translateX(3px) translateY(3px);
+}
+
+.neon-text:hover::before {
+  transform: skewX(0deg) translateX(-7px);
+}
+
+.neon-text:hover::after {
+  transform: skewX(0deg) translateX(7px);
+}
+
+/* Ripple Hover Effect on Letters */
+.neon-text span {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.neon-text span:hover {
+  transform: translateY(-10px) rotate(5deg);
+  color: #ffdd57;
+}
+
+/* Ripple effect background when hovering on text */
+.neon-text span::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
+}
+
+.neon-text span:hover::after {
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+}
